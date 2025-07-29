@@ -14,6 +14,8 @@ export default function Login() {
     setError(null); // Clear previous errors
     if (await login(email, password)) {
       navigate('/profile');
+      
+      // window.location.href = '/profile'; 
     } else {
       setError('Invalid email or password. Please try again.');
     }

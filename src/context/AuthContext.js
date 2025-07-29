@@ -1,11 +1,9 @@
 // src/context/AuthContext.js
 import { createContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate(); // Initialize navigate hook
   const login = async (email, password) => {
     const res = await fetch('http://localhost:4000/login', {
       method: 'POST',
@@ -19,12 +17,11 @@ export const AuthProvider = ({ children }) => {
       const authorizationHeaderValue = data.headers.get('authorization');
       const token = authorizationHeaderValue.replace('Bearer ', '');
       localStorage.setItem('token', token);
-      setUser(data);
-      console.log(data.headers);
-      console.log(token);
-      navigate('/profile');
+      setUser(res);
+      return true;   
     } else {
       console.log(data.status);
+      return false;
     }
   };
 
