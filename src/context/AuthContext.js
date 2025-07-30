@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
 
     const data = await res;
     if (res.ok) {
-      // localStorage.setItem('token', data.headers.authorization);
       const authorizationHeaderValue = data.headers.get('authorization');
       const token = authorizationHeaderValue.replace('Bearer ', '');
       localStorage.setItem('token', token);

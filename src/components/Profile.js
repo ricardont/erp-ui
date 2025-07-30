@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function Profile() {
+export default function Activities() {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 

@@ -13,9 +13,7 @@ export default function Login() {
     e.preventDefault();
     setError(null); // Clear previous errors
     if (await login(email, password)) {
-      navigate('/profile');
-      
-      // window.location.href = '/profile'; 
+      navigate('/activities');
     } else {
       setError('Invalid email or password. Please try again.');
     }
